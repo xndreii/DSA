@@ -1,0 +1,62 @@
+// Base class to hold basic cylinder properties
+class CylinderBase {
+    protected double radius;
+    protected double height;
+
+    // Constructor to initialize radius and height
+    public CylinderBase(double radius, double height) {
+        this.radius = radius;
+        this.height = height;
+    }
+
+    // Getter for radius
+    public double getRadius() {
+        return radius;
+    }
+
+    // Getter for height
+    public double getHeight() {
+        return height;
+    }
+}
+
+// Derived class to compute area and volume of the cylinder
+class Cylinder extends CylinderBase {
+
+    // Constructor to initialize radius and height using base class constructor
+    public Cylinder(double radius, double height) {
+        super(radius, height);
+    }
+
+    // Method to compute the surface area of the cylinder
+    public double computeSurfaceArea() {
+        double area = 2 * Math.PI * radius * radius + 2 * Math.PI * radius * height;
+        return area;
+    }
+
+    // Method to compute the volume of the cylinder
+    public double computeVolume() {
+        double volume = Math.PI * radius * radius * height;
+        return volume;
+    }
+}
+
+// Main class to test the Cylinder class
+public class CylinderTest {
+    public static void main(String[] args) {
+        // Example radius and height
+        double radius = 8.0;
+        double height = 16.0;
+
+        // Create an instance of Cylinder
+        Cylinder cylinder = new Cylinder(radius, height);
+
+        // Compute and display the surface area and volume
+        double surfaceArea = cylinder.computeSurfaceArea();
+        double volume = cylinder.computeVolume();
+
+        System.out.println("Cylinder with radius " + radius + " and height " + height + ":");
+        System.out.println("Surface Area: " + surfaceArea);
+        System.out.println("Volume: " + volume);
+    }
+}
